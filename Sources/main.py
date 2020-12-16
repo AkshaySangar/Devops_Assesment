@@ -54,7 +54,7 @@ class Account:
             if acc_number == self.account_number[i]:
                 self.balance[i] = int(self.balance[i])+int(amount)
                 return self.balance[i]
-                #print('Amount credited')
+                print('Amount credited')
                 self.set_data()
                 break
 
@@ -68,7 +68,7 @@ class Account:
             if acc_number == self.account_number[i]:
                 self.balance[i] = self.balance[i] - amount
                 return self.balance[i]
-                #print('Account Debited')
+                print('Account Debited')
                 self.set_data()
                 break
 
@@ -76,6 +76,9 @@ class Account:
 if __name__ == "__main__":
     s = Account()
     s.create_account('Akshay',1,8421966287,1000)
-    #df1=s.display_all_records()
+    df1=s.display_all_records()
     s.display_by_account_number(1)
-    #print(df1)
+    s.credit(1,1000)
+    df1 = s.display_all_records()
+    s.debit(1,1000)
+    print(df1)

@@ -1,6 +1,6 @@
 import unittest
 import main as m
-import pandas as pd
+import pandas 
 from pandas.util.testing import assert_frame_equal
 
 
@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
     account_number.append(1)
     mobile_no.append(8421966287)
     balance.append(1000)
-    df = pd.DataFrame(data)
+    df = pandas.DataFrame(data)
 
     def test_all_record(self):
         s = m.Account()
@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
                 self.balance[i] = int(self.balance[i])+int(amount)
-                self.df = pd.DataFrame(self.data)
+                self.df = pandas.DataFrame(self.data)
                 break
 
 
@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
                 self.balance[i] = self.balance[i] - amount
-                self.df = pd.DataFrame(self.data)
+                self.df = pandas.DataFrame(self.data)
                 break
 
         self.assertEqual(bal,1000)
