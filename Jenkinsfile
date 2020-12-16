@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'python:3.5.1-alpine'
+                    image 'python:3.9-alpine'
                 }
             }
             steps {
@@ -15,7 +15,7 @@ pipeline {
         stage('Test') { 
             agent {
                 docker {
-                    image 'qnib/pytest' 
+                    image 'qnib/pytest pandas' 
                 }
             }
             steps {
