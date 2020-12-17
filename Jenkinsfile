@@ -15,7 +15,7 @@ pipeline {
         stage('Test') { 
             agent {
                 docker {
-                    image 'python:3.9-alpine' 
+                    image 'pip install pandas' 
                 }
             }
             steps {
