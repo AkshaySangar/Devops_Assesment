@@ -8,7 +8,7 @@ class Account:
     mobile_no = []
     balance = []
     #account_type = []
-    data = {'Customer_Name': name, '  Account': account_number,  '  Balance': balance, '  Mobile_No.': mobile_no}
+    data = {'Customer_Name': name, 'Account': account_number,  'Balance': balance, 'Mobile_No': mobile_no}
 
     df = pd.DataFrame(data)
 
@@ -32,7 +32,7 @@ class Account:
     def display_all_records(self):
         self.set_data()
         #print(self.df)
-        return self.df
+        return self.data
 
     def display_by_account_number(self,acc_number):
         self.set_data()
@@ -41,14 +41,20 @@ class Account:
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
                 acc=self.df.loc[[i]]
-                return acc
+                data={}
+                data['Customer_Name'] = self.data['Customer_Name'][i]
+                data['Account'] = self.data['Account'][i]
+                data['Balance'] = self.data['Balance'][i]
+                data['Mobile_No'] = self.data['Mobile_No'][i]
+                print(data)
+                return data
                 break
 
     def credit(self,acc_number,amount):
 
-        print('Enter account number')
+        #print('Enter account number')
         # acc_number = input()
-        print('Enter amount to credit')
+        #print('Enter amount to credit')
         # amount = input()
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
@@ -60,9 +66,9 @@ class Account:
 
     def debit(self,acc_number,amount):
 
-        print('Enter account number')
+        #print('Enter account number')
         # acc_number = input()
-        print('Enter amount to credit')
+        #print('Enter amount to credit')
         # amount = input()
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
@@ -76,9 +82,10 @@ class Account:
 if __name__ == "__main__":
     s = Account()
     s.create_account('Akshay',1,8421966287,1000)
+    s.create_account('AkshaySangar', 2, 8421966287, 1000)
     df1=s.display_all_records()
     s.display_by_account_number(1)
     s.credit(1,1000)
     df1 = s.display_all_records()
     s.debit(1,1000)
-    print(df1)
+    #print(df1)
