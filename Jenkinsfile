@@ -12,16 +12,15 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'Sources/*.py*')
             }
         }
-        stage('Test') { 
-            agent {
-                docker {
-                    image 'pip install pandas' 
-                }
-            }
-            steps {
-                sh 'python Sources/test.py' 
-            }
-            
-        }
+        stage('test') {
+			steps {
+				sh 'python test.py'
+				}
+			post {
+				always {
+					junit 'test-reports/*.xml'
+					}
+				}	    
+		}
     }
 }
