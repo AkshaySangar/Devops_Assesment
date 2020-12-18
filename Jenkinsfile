@@ -35,6 +35,7 @@ pipeline {
                 echo "ok"
             }
         }
+	}	
     
     post {
         always {
@@ -46,5 +47,5 @@ pipeline {
             
 			}
 		} 
-	}	 
+		 
 }
