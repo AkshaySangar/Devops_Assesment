@@ -17,6 +17,7 @@ class Account:
 
     def display_all_records(self):
         print(self.data)
+        return self.data
 
     def display_by_account_number(self, acc_number3):
         data_bank = {}
