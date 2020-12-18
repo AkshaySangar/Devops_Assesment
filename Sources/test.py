@@ -28,10 +28,11 @@ class Test(unittest.TestCase):
     def test_record_by_acc_no(self):
         s = m.Account()
         acc_number = 1
+		data = {}
         df1 = s.display_by_account_number(1)
         for i in range(0, len(self.account_number)):
             if acc_number == self.account_number[i]:
-                data = {}
+                
                 data['Customer_Name'] = self.data['Customer_Name'][i]
                 data['Account'] = self.data['Account'][i]
                 data['Balance'] = self.data['Balance'][i]
