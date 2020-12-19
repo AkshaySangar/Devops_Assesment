@@ -27,11 +27,16 @@ pipeline {
                 }
             }
         }
-		stage('Email') {
+		stage('Success') {
+            when {
+                expression { doError == '0' }
+            }
             steps {
-				emailext (to: 'abc@gmail.com', replyTo: 'abc@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html), mimeType: 'text/html')
+                echo "ok"
             }
         }
-		
-	}			 
+	}	
+    
+    
+		 
 }
