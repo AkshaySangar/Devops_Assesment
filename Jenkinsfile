@@ -27,25 +27,11 @@ pipeline {
                 }
             }
         }
-		stage('Success') {
-            when {
-                expression { doError == '0' }
-            }
+		stage('Email') {
             steps {
-                echo "ok"
+                emailext (to: 'akshaysangar1@gmail.com', replyTo: 'akshaysangar1@gmail@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html), mimeType: 'text/html');
             }
         }
-	}	
-    
-    post {
-        always {
-            echo 'I will always say Hello again!'
-            
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-            
-			}
-		} 
-		 
+		
+	}			 
 }
