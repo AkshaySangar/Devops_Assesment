@@ -30,8 +30,8 @@ pipeline {
 		stage('Deliver') { 
             agent any
             environment { 
-                VOLUME = '$(pwd)/sources:/src'
-                IMAGE = 'cdrx/pyinstaller-linux:python2'
+                VOLUME = '$(pwd)/Sources:/src'
+                IMAGE = 'cdrx/pyinstaller-linux:python3.9'
             }
             steps {
                 dir(path: env.BUILD_ID) { 
@@ -41,7 +41,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/sources/dist/main" 
+                    archiveArtifacts "${env.BUILD_ID}/Sources/dist/main" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
