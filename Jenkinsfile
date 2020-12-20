@@ -46,8 +46,12 @@ pipeline {
                 }
             }
         }
-	}	
-    
- 
+	}
+		post{
+            always{
+                    mail to:"akshaysangar9@gmail.com", subject:"Status of pipeline: ${currentBuild.fullDisplayName}", 
+                    body: "Bank Management System Application keeps the track of the books present in the library. \n ${env.BUILD_URL} has result ${currentBuild.result}."
+                }
+            }	
 		 
 }
