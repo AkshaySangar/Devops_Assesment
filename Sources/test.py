@@ -8,9 +8,9 @@ class Test(unittest.TestCase):
     name = []
     mobile_no = []
     balance = []
-    # account_type = []
+
     data = {'Customer_Name': name, 'Account': account_number, 'Balance': balance, 'Mobile_No': mobile_no}
-    # df = pd.DataFrame(data)
+
 
     s = m.Account()
     s.create_account('Akshay', 1, 8421966287, 1000)

@@ -1,3 +1,10 @@
+"""
+Name             : Akshay S. Sangar
+Emp_Id           : 214925
+Application Name : Bank Management System
+"""
+
+
 import sys
 
 
@@ -9,16 +16,19 @@ class Account:
     balance = []
     data = {'Customer_Name': name, 'Account': account_number,  'Balance': balance, 'Mobile_No': mobile_no}
 
+    # Function for vreating new account
     def create_account(self, name1, acc_number2, mbl_no1, bal1):
         self.name.append(name1)
         self.account_number.append(acc_number2)
         self.mobile_no.append(mbl_no1)
         self.balance.append(bal1)
 
+    # Function for displaying all records
     def display_all_records(self):
         print(self.data)
         return self.data
 
+    # Function for diplaying record by account number
     def display_by_account_number(self, acc_number3):
         data_bank = {}
         for i in range(0, len(self.account_number)):
@@ -30,21 +40,24 @@ class Account:
                 print(data_bank)
                 return data_bank
 
+    # Function for adding amount into balance
     def credit(self, acc_number4, amount2):
         for i in range(0, len(self.account_number)):
             if acc_number4 == self.account_number[i]:
                 self.balance[i] = int(self.balance[i])+int(amount2)
                 return self.balance[i]
 
-    def debit(self, acc_number4, amount3):
+    # Function for withdraw amount from current balance balance
+    def debit(self, acc_number5, amount3):
         for i in range(0, len(self.account_number)):
-            if acc_number4 == self.account_number[i]:
-                self.balance[i] = self.balance[i] - amount3
+            if acc_number5 == self.account_number[i]:
+                self.balance[i] = int(self.balance[i]) - int(amount3)
                 return self.balance[i]
 
 
 if __name__ == "__main__":
     s = Account()
+    # Continue while loop
     while True:
         print('1. Create Account\n2. Display Record\n3. Credit Amount\n4. Debit')
         ch = int(input())
@@ -74,7 +87,7 @@ if __name__ == "__main__":
         elif ch == 4:
             print('Enter account number')
             acc_number1 = input()
-            print('Enter amount to credit')
+            print('Enter amount to debit')
             amount1 = input()
             s.debit(acc_number1, amount1)
 
